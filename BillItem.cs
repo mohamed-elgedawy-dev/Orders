@@ -20,6 +20,8 @@ namespace Orders
 
         public decimal Total { get; set; }
 
+        public int GrandTotal { get; set; } 
+
 
     }
 }

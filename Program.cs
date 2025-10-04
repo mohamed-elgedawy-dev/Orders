@@ -83,6 +83,8 @@ namespace Orders
                     Price = product.Price,
                     CustomerName = view.Name,
                     Total = lineTotal
+                    
+
                 });
 
                 order.SaveChanges();
@@ -137,6 +139,8 @@ namespace Orders
             }
 
             decimal grandTotal = bill.BillList.Sum(i => i.Total);
+            
+            
 
             Console.WriteLine(new string('-', 65));
             Console.WriteLine($"Grand Total: {grandTotal:N2}");
@@ -147,7 +151,7 @@ namespace Orders
 
 
             #region Save Bill to JSON
-            BillSave billSave = new BillSave(bill.BillList);
+            BillSave billSave = new BillSave(bill.BillList,grandTotal);
             #endregion
         }
     }
