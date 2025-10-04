@@ -14,15 +14,21 @@ namespace Orders
         {
             
         }
-        public BillSave(List<BillItem> list)
+        public BillSave(List<BillItem> list, decimal grandTotal)
         {
             string customerName = list[0].CustomerName ?? "Unknown";
 
             
             string fileName = $"{customerName}.json";
 
+            var dataToSave = new
+            {
+                Items = list,
+                GrandTotal = grandTotal
+            };
 
-            string json = JsonSerializer.Serialize(list, new JsonSerializerOptions { WriteIndented = true });
+
+            string json = JsonSerializer.Serialize(dataToSave, new JsonSerializerOptions { WriteIndented = true });
 
             
             File.WriteAllText(fileName, json);
